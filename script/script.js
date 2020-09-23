@@ -29,7 +29,7 @@ let lightColor = (element, number) => {
     number = number * 500;
     setTimeout(() => {
         element.classList.add('selected');
-    }, number - 250);
+    }, number - 350);
     setTimeout(() => {
         element.classList.remove('selected');
     });
@@ -45,7 +45,7 @@ let checkOrder = () => {
     }
     if(clickedOrder.length == order.length) {
         //alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!`);
-        swal({ title: 'Pontuação: ' + score, text: 'Você acertou! Iniciando próximo nível!', timer: 700,button: false});
+        swal({ title: 'Pontuação: ' + score, text: 'Você acertou! Iniciando próximo nível!', timer: 700,button: true});
         
         nextLevel();
     }
@@ -114,7 +114,6 @@ green.onclick = () => click(0);
 red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
-
 
 //inicio do jogo
 playGame();
