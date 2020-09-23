@@ -48,11 +48,11 @@ let checkOrder = () => {
             break;
         }
     }
-    if(clickedOrder.length == order.length) {
-        //alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!`);
+    if(clickedOrder.length === order.length) {
         swal({ title: 'Pontuação: ' + score, text: 'Você acertou! Iniciando próximo nível!', timer: 700,button: true});
         nextLevel();
     }
+    else;
 }
 
 //funcao para o clique do usuario
@@ -88,15 +88,17 @@ let nextLevel = () => {
 //funcao para game over
 let gameOver = () => {
   
-  alert(`Este é seu limite?\nSua pontuação foi de ${score}.\n Tente novamente :D`);
+  //alert(`Este é seu limite?\nSua pontuação foi de ${score}.\n Tente novamente :D`);
+
+  document.body.innerHTML = '<h1 class="game-over">Fim de jogo</h1><br><h3 class="game-over">Este é seu limite?<br>Sua pontuação foi de '+score+' pontos.<br> Tente novamente :D</h3><br><div class="game-over"><input class="game-over" type="button" value="Jogar novamente" onClick="window.location.reload()"></div>';
   //TODO: pesquisar o bug relacionado a esse swal()
   /*swal({ title:"Este é seu limite?", text: "Sua pontuação foi de ", icon: "warning", button: "Vamos jogar novamente!" });*/
-  
-  order = [];
-  clickedOrder = [];
-  playGame();
-  // Recarrega a página atual sem usar o cache
+
+   // Recarrega a página atual sem usar o cache
   //document.location.reload(true);
+  /*order = [];
+  clickedOrder = [];
+  playGame();*/
 }
 
 //funcao de inicio do jogo

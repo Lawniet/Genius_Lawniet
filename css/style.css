@@ -23,6 +23,14 @@ body {
     height: 400px;
 }
 
+.game-over {
+  text-align: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  margin: 50px;
+  font-family: arial;
+}
+
 .blue {
     grid-area: azul;
     background-color: blue;
