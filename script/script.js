@@ -2,6 +2,11 @@ let order = [];
 let clickedOrder = [];
 let score = 0;
 
+let regra = JSON.parse(data_item);
+	
+let urlImage = regra[0].url;
+let textRegra =  regra[0].text;
+
 //0 - verde
 //1 - vermelho
 //2 - amarelo
@@ -46,7 +51,6 @@ let checkOrder = () => {
     if(clickedOrder.length == order.length) {
         //alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!`);
         swal({ title: 'Pontuação: ' + score, text: 'Você acertou! Iniciando próximo nível!', timer: 700,button: true});
-        
         nextLevel();
     }
 }
@@ -86,10 +90,13 @@ let gameOver = () => {
   
   alert(`Este é seu limite?\nSua pontuação foi de ${score}.\n Tente novamente :D`);
   //TODO: pesquisar o bug relacionado a esse swal()
-  /*swal({title: "Este é seu limite?", text: "Sua pontuação foi de ", button: "Vamos jogar novamente!"});*/
+  /*swal({ title:"Este é seu limite?", text: "Sua pontuação foi de ", icon: "warning", button: "Vamos jogar novamente!" });*/
+  
   order = [];
   clickedOrder = [];
   playGame();
+  // Recarrega a página atual sem usar o cache
+  //document.location.reload(true);
 }
 
 //funcao de inicio do jogo
@@ -98,13 +105,9 @@ let playGame = () => {
     swal({  title: "Bem vindo ao Geniets!",  text: "Estamos iniciando novo jogo. Espero que se divirta :D",  icon: "info",  buttons: ["Como jogar", "Vamos jogar!"],  dangerMode: false, }).then((willDelete) => {
       if (willDelete) { swal("Boa sorte!", { icon: "success",timer: 700, button: false });
       } 
-      else {
-          const urlImage = "https://piskel-imgstore-b.appspot.com/img/da22d597-fdaf-11ea-aa59-6b4e8d0b6e8e.gif";
-          const textRegra = "Jogo Genius Estrela: O clássico está de volta! Aceite o desafio: Pense rápido e tente repetir as sequências de luzes. Clique na cor mais clara na ordem correta e aumente sua pontução a cada rodada!";
-          swal({ title: "Sobre o jogo:", text: textRegra, icon: urlImage });
+      else { swal({ title: "Sobre o jogo:", text: textRegra, icon: urlImage });
       }
     });
-
     score = 0;
     nextLevel();
 }
